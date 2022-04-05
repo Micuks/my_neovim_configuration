@@ -1,4 +1,5 @@
 set runtimepath+=~/.config/nvim/ftdetect
+set runtimepath+=~/.config/nvim/lua
 
 set nu
 set smartcase
@@ -39,6 +40,9 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'wakatime/vim-wakatime'
@@ -122,7 +126,7 @@ Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 
-colorscheme sonokai
+colorscheme onehalfdark
 
 let g:transparent_enabled = v:true
 "required
@@ -248,7 +252,7 @@ hi! SpellRare gui=undercurl guisp=magenta
 let g:Lf_ShortcutF = '<m-f>'
 "let g:Lf_ShortcutB = '<m-b>'
 "noremap <c-n> :LeaderfMru<cr>
-"noremap <m-p> :LeaderfFunction!<cr>
+noremap <m-p> :LeaderfFunction!<cr>
 "noremap <m-n> :LeaderfBuffer<cr>
 "noremap <m-m> :LeaderfTag<cr>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
@@ -370,3 +374,4 @@ nnoremap <F5> :AsyncRun -mode=async  g++ -g -Wall -std=c++11 "$(VIM_FILEPATH)" -
 nnoremap <F6> :cclose <cr>
 
 let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutToggle = '<m-a>'
