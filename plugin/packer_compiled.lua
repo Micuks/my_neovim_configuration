@@ -69,15 +69,21 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["AutoSave.nvim"] = {
+    loaded = true,
+    path = "/home/micuks/.local/share/nvim/site/pack/packer/start/AutoSave.nvim",
+    url = "https://github.com/Pocco81/AutoSave.nvim"
+  },
   LeaderF = {
     loaded = true,
     path = "/home/micuks/.local/share/nvim/site/pack/packer/start/LeaderF",
     url = "https://github.com/Yggdroot/LeaderF"
   },
-  ale = {
+  ["alpha-nvim"] = {
+    config = { "\27LJ\2\2`\0\0\3\0\5\0\n6\0\0\0'\1\1\0B\0\2\0029\0\2\0006\1\0\0'\2\3\0B\1\2\0029\1\4\1B\0\2\1K\0\1\0\vconfig\26alpha.themes.startify\nsetup\nalpha\frequire\0" },
     loaded = true,
-    path = "/home/micuks/.local/share/nvim/site/pack/packer/start/ale",
-    url = "https://github.com/dense-analysis/ale"
+    path = "/home/micuks/.local/share/nvim/site/pack/packer/start/alpha-nvim",
+    url = "https://github.com/goolord/alpha-nvim"
   },
   ["asyncrun.vim"] = {
     loaded = true,
@@ -104,6 +110,11 @@ _G.packer_plugins = {
     path = "/home/micuks/.local/share/nvim/site/pack/packer/start/echodoc.vim",
     url = "https://github.com/Shougo/echodoc.vim"
   },
+  ["glow.nvim"] = {
+    loaded = true,
+    path = "/home/micuks/.local/share/nvim/site/pack/packer/start/glow.nvim",
+    url = "https://github.com/ellisonleao/glow.nvim"
+  },
   indentLine = {
     loaded = true,
     path = "/home/micuks/.local/share/nvim/site/pack/packer/start/indentLine",
@@ -114,11 +125,6 @@ _G.packer_plugins = {
     path = "/home/micuks/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  ["markdown-preview.nvim"] = {
-    loaded = true,
-    path = "/home/micuks/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
-    url = "https://github.com/iamcco/markdown-preview.nvim"
-  },
   ["nvim-transparent"] = {
     loaded = true,
     path = "/home/micuks/.local/share/nvim/site/pack/packer/start/nvim-transparent",
@@ -128,6 +134,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/micuks/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/micuks/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["onedark.vim"] = {
     loaded = true,
@@ -208,6 +219,10 @@ time([[Defining packer_plugins]], false)
 time([[Runtimepath customization]], true)
 vim.o.runtimepath = vim.o.runtimepath .. ",/home/micuks/.local/share/nvim/site/pack/packer/start/onehalf/vim"
 time([[Runtimepath customization]], false)
+-- Config for: alpha-nvim
+time([[Config for alpha-nvim]], true)
+try_loadstring("\27LJ\2\2`\0\0\3\0\5\0\n6\0\0\0'\1\1\0B\0\2\0029\0\2\0006\1\0\0'\2\3\0B\1\2\0029\1\4\1B\0\2\1K\0\1\0\vconfig\26alpha.themes.startify\nsetup\nalpha\frequire\0", "config", "alpha-nvim")
+time([[Config for alpha-nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads

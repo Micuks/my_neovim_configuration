@@ -14,6 +14,9 @@ vim.o.startofline = true
 
 vim.o.clipboard = "unnamedplus"
 
+-- vim.g.netrw-ctrl-h = "<m-h>"
+-- vim.g.netrw-ctrl-l = "<m-l>"
+
 -- Mapping timeout
 vim.o.timeout = false
 vim.o.ttimeout = true

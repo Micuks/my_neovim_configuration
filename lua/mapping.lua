@@ -60,3 +60,5 @@ vim.o.splitright = true -- when splitting vertically, mnove coursor to right pan
 
  nmap('<esc>', '<esc>:noh<cr>')
  imap('<esc>', '<esc>:noh<cr>')
+
+ nmap('<leader>p', ':Glow<cr>')

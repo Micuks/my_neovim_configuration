@@ -113,7 +113,7 @@ return require('packer').startup(function()
   use 'ludovicchabant/vim-gutentags'
 
   -- Code Analysis
-  use 'dense-analysis/ale'
+  -- use 'dense-analysis/ale'
 
   -- Coc Plugin
   use {'neoclide/coc.nvim', branch = 'release'}
@@ -122,9 +122,38 @@ return require('packer').startup(function()
   use 'puremourning/vimspector'
 
   -- MD preview
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
+  -- use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
+  use {"ellisonleao/glow.nvim"}
 
   -- Asyncrun
   use 'skywind3000/asyncrun.vim'
 
+  use "Pocco81/AutoSave.nvim"
+  local autosave = require("autosave")
+
+  autosave.setup(
+  {
+    enabled = true,
+    execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+    events = {"InsertLeave", "TextChanged"},
+    conditions = {
+      exists = true,
+      filename_is_not = {},
+      filetype_is_not = {},
+      modifiable = true
+    },
+    write_all_buffers = false,
+    on_off_commands = true,
+    clean_command_line_interval = 0,
+    debounce_delay = 135
+  }
+  )
+
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function ()
+      require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
+  }
 end)
