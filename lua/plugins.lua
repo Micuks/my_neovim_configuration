@@ -61,7 +61,7 @@ return require('packer').startup(function()
 
   require'nvim-treesitter.configs'.setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-    ensure_installed = "maintained",
+    ensure_installed = "all",
 
     -- Install languages synchronously (only applied to `ensure_installed`)
     sync_install = true,
@@ -122,7 +122,7 @@ return require('packer').startup(function()
   use 'puremourning/vimspector'
 
   -- MD preview
-  -- use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
+  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
   use {"ellisonleao/glow.nvim"}
 
   -- Asyncrun
