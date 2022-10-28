@@ -214,11 +214,17 @@ local config = {
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
       ["<leader>x"] = { "<cmd>cclose<cr>", desc = "Close Quickfix" },
       ["<leader>j"] = { "<cmd><cr>", desc = "Jump" },
       ["<leader>jr"] = { "<cmd>Ouroboros<cr>", desc = "Jump to header/source" },
+
+      -- ToDoList
+      ["<leader>st"] = { "<cmd>TodoTelescope<cr>", desc = "Seach todos" },
+      ["<leader>k"] = { "<cmd><cr>", desc = "My plugins" },
+      ["<leader>kt"] = { "<cmd>TodoLocList<cr>", desc = "List todos" },
     },
     t = {
       -- setting a mapping to false will disable it
@@ -258,6 +264,14 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
+      ["folke/todo-comments.nvim"] = {
+        ensure_installed = { "nvim-lua/plenary.nvim" },
+        config = function()
+          require("todo-comments").setup {
+            -- My configuration
+          }
+        end
+      }
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
