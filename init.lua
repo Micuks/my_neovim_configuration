@@ -54,7 +54,7 @@ local config = {
       autowrite = true,
       autowriteall = true,
       autoread = true,
-      mouse = "",
+      mouse = "a",
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
@@ -77,7 +77,9 @@ local config = {
         'Marginpar on page',
         'CJK',
         'hbox',
-      }
+      },
+      -- Neovim-transparent
+      transparent_enabled = true,
     },
   },
   -- If you need more control, you can use the function()...end notation
@@ -218,23 +220,99 @@ local config = {
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
       ["<leader>x"] = { "<cmd>cclose<cr>", desc = "Close Quickfix" },
-      ["<leader>j"] = { "<cmd><cr>", desc = "Jump" },
+      ["<leader>j"] = { "<Nop>", desc = "Jump" },
       ["<leader>jr"] = { "<cmd>Ouroboros<cr>", desc = "Jump to header/source" },
 
       -- ToDoList
       ["<leader>st"] = { "<cmd>TodoTelescope<cr>", desc = "Seach todos" },
-      ["<leader>k"] = { "<cmd><cr>", desc = "My plugins" },
+      ["<leader>k"] = { "<Nop>", desc = "My plugins" },
       ["<leader>kt"] = { "<cmd>TodoLocList<cr>", desc = "List todos" },
+
+      -- nvim-dap debugger
+      ["<F5>"] = { "<cmd>lua require'dap.ext.vscode'.load_launchjs('.vscode/launch.json', {codelldb = {'cpp'}})<cr><cmd>lua require'dap'.continue()<cr>",
+        desc = "continue" },
+      ["<leader>dd"] = { "<cmd>lua require'dap.ext.vscode'.load_launchjs('.vscode/launch.json', {codelldb = {'cpp'}})<cr>",
+        desc = "Debug from launch.json" },
+      ["F9"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "toggle breakpoint" },
+      ["<F10>"] = { "<cmd>lua require'dap'.step_over()<cr>", desc = "stop over" },
+      ["<F11>"] = { "<cmd>lua require'dap'.step_into()<cr>", desc = "step into" },
+      ["<F12>"] = { "<cmd>lua require'dap'.step_out()<cr>", desc = "step out" },
+      ["<leader>dr"] = { "<cmd>lua require'dap'.run_to_cursor()<cr>", desc = "Run to Cursor" },
+      ["<leader>de"] = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", desc = "Evaluate Input" },
+      ["<leader>dx"] = { "<cmd>lua require'dap'.terminate()<cr>", desc = "Terminate" },
+      ["<leader>d"] = { "<nop>", desc = "debugger" },
+      ["<leader>db"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "toggle breakpoint" },
+      ["<leader>dB"] = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+        desc = "condition breakpoint" },
+      ["<leader>dp"] = { "<cmd>lua require'dap'.set_breakpoint(nil,nil,vim.fn.input('Log point message: '))<cr>",
+        desc = "log point breakpoint" },
+      ["<leader>dur"] = { "<cmd>lua require'dap'.repl.open()<cr>", desc = "open repl" },
+      ["<leader>dl"] = { "<cmd>lua require'dap'.run_last()<cr>", desc = "run last" },
+
+      -- nvim-dapui
+      ["<leader>du"] = { "<nop>", desc = "dapui" },
+      ["<leader>dut"] = { "<cmd>lua require'dapui'.toggle()<cr>", desc = "toggle dapui" },
+      ["<leader>duc"] = { "<cmd>lua require'dapui'.close()<cr>", desc = "close dapui" },
     },
     t = {
       -- setting a mapping to false will disable it
       -- ["<esc>"] = false,
+    },
+    v = {
+      -- Fold
+      ["<leader>f"] = { ":<esc><cmd>'<,'>fold<cr><esc>", desc = "Fold selected code" },
+      ["<leader>u"] = { ":<esc><cmd>'<,'>foldopen<cr><esc>", desc = "Unfold selected code" },
     },
   },
 
   -- Configure plugins
   plugins = {
     init = {
+      ["xiyaowong/nvim-transparent"] = {
+        -- require("transparent").
+        config = function()
+          require("transparent").setup({
+            enable = true, -- boolean: enable transparent
+            extra_groups = { -- table/string: additional groups that should be cleared
+              -- In particular, when you set it to 'all', that means all available
+              -- groups
+
+              -- example of akinsho/nvim-bufferline.lua
+              -- "BufferLineTabClose",
+              -- "BufferLineBufferSelected",
+              -- "BufferLineFill",
+              -- "BufferLineBackground",
+              -- "BufferLineSeparator",
+              -- "BufferLineIndicatorSelected",
+            },
+            exclude = {
+              -- table: groups you don't want to clear
+            },
+          })
+        end
+      },
+      ["jbyuki/nabla.nvim"] = {
+        config = function()
+          -- Disable virtual text.
+          require("nabla").disable_virt()
+        end
+      },
+      ["mfussenegger/nvim-dap"] = {
+        module = "dap",
+        config = require "user.plugins.dap",
+      },
+      -- ["jayp0521/mason-nvim-dap.nvim"] = {
+      --   after = { "nvim-dap", "mason" },
+      --   config = function()
+      --     require("mason-nvim-dap").setup({
+      --       automatic_setup = true,
+      --     })
+      --   end
+      -- },
+      ["rcarriga/nvim-dap-ui"] = {
+        after = "nvim-dap",
+        config = require "user.plugins.dapui",
+      },
       ["jakemason/ouroboros"] = {
         ensure_installed = { "nvim-lua/plenary.nvim" },
       },
