@@ -18,7 +18,7 @@ return {
     "mrjones2014/smart-splits.nvim",
     build = "./kitty/install-kittens.bash",
     opts = {
-      wrap_at_edge = false,
+      at_edge = "split",
     },
   },
   {
