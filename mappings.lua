@@ -11,16 +11,16 @@ local mappings = {
     ["<C-s>"] = false,
     ["q:"] = ":",
     -- better buffer navigation
-    ["]b"] = false,
-    ["[b"] = false,
-    ["<S-l>"] = {
-      function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+    ["]b"] = {
+      function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.cound or 1) end,
       desc = "Next buffer",
     },
-    ["<S-h>"] = {
+    ["[b"] = {
       function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Previous buffer",
     },
+    ["<S-l>"] = false,
+    ["<S-h>"] = false,
     -- better search
     n = { utils.better_search "n", desc = "Next search" },
     N = { utils.better_search "N", desc = "Previous search" },
