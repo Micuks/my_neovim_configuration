@@ -21,3 +21,7 @@ git clone https://code.mehalter.com/AstroNvim_user ~/.config/nvim/lua/user
 ```sh
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 ```
+
+## Credits
+
+Based on [Mehalter's config](https://code.mehalter.com/AstroNvim_user)
