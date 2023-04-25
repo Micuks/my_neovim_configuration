@@ -1,4 +1,4 @@
 return {
   "lervag/vimtex",
-  enable = true,
+  enabled = false,
 }

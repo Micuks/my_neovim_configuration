@@ -1,6 +1,6 @@
 return {
   "jbyuki/nabla.nvim",
-  enable = false,
+  enabled = false,
   config = function()
     -- Disable virtual text
     require("nabla").disable_virt()

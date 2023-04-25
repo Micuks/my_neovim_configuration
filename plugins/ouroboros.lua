@@ -1,7 +1,7 @@
 return {
   "jakemason/ouroboros",
-  enable = true,
-  ensure_installed = {
+  enabled = true,
+  dependencies = {
     "nvim-lua/plenary.nvim",
   },
 }

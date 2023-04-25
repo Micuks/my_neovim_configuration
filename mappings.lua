@@ -8,7 +8,7 @@ local mappings = {
     ["<C-Right>"] = false,
     ["<C-Up>"] = false,
     ["<C-q>"] = false,
-    ["<C-s>"] = false,
+    -- ["<C-s>"] = false,
     ["q:"] = ":",
     -- better buffer navigation
     ["]b"] = {
@@ -46,7 +46,7 @@ local mappings = {
       desc = "Switch Buffers",
     },
     -- vim-sandwich
-    ["s"] = "<Nop>",
+    -- ["s"] = "<Nop>",
     ["<leader>n"] = { "<cmd>enew<cr>", desc = "New File" },
     ["<leader>N"] = { "<cmd>tabnew<cr>", desc = "New Tab" },
     ["<leader><cr>"] = { '<esc>/<++><cr>"_c4l', desc = "Next Template" },
@@ -184,7 +184,7 @@ local mappings = {
     -- Easy-Align
     ga = { "<Plug>(EasyAlign)", desc = "Easy Align" },
     -- vim-sandwich
-    ["s"] = "<Nop>",
+    -- ["s"] = "<Nop>",
   },
   o = {
     -- line text-objects
