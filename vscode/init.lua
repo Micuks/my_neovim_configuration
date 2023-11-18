@@ -14,4 +14,8 @@ if vim.fn.exists "g:vscode" then
   vmap("k", "gk")
   vmap("0", "g0")
   vmap("$", "g$")
+
+  -- Set number and relnumber
+  vim.wo.number = true
+  vim.wo.relativenumber = true
 end
